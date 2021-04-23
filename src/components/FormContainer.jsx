@@ -26,7 +26,7 @@ const BlockWrapper = styled.div``;
 const FormContainer = props => {
   const [showThankYou, setShowThankYou] = useState(false);
 
-  useEffect(() => {}, [props.showThankYou]);
+  useEffect(() => { }, [props.showThankYou]);
 
   const handleOnSubmit = (values, { setSubmitting }) => {
     var bodyFormData = new FormData();
@@ -59,7 +59,7 @@ const FormContainer = props => {
       <Formik
         initialValues={{ ...newForm.values }}
         onSubmit={handleOnSubmit}
-        validationSchema={Yup.object().shape({ ...firstSchema })}
+        validationSchema={Yup.object().shape({ ...firstSchema }, [["type_of_contact_nip", "type_of_contact_pesel"]])}
       >
         {props => {
           const { values, isSubmitting, handleSubmit } = props;
